@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Log : MonoBehaviour
 {
+    // De
+    public int jumpForce = 1;
+
     public GameObject obj;
     public Rigidbody2D rb;
 
 
-    void Start()
+    void Start() // = Main
     {
-        rb = obj.GetComponent<Rigidbody2D>();;
+        rb = obj.GetComponent<Rigidbody2D>();
     }
-    void Update()
+    void Update() // = Main every frame (maybe 100/s)
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(new Vector2(0.1f, 200f));
+            rb.AddForce(new Vector2(0.1f, 200f * JumpForce(jumpForce)));
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -28,5 +31,10 @@ public class Log : MonoBehaviour
         }
     }
 
+    int JumpForce(int jumpForce)
+    {
+        jumpForce += 1;
+        return jumpForce;
+    }
 
 }
